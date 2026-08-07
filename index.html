@@ -3,656 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ben Wright | Portfolio & Healthcare Companion DevLog</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f19;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #3b82f6; /* Blue 500 */
-        }
-    </style>
+    <title>IntraSocks - Browse Offline with a Smart Local Proxy</title>
+    <meta name="description" content="IntraSocks is a local proxy and MitM system that caches web content for offline browsing. Track traffic and analyze page assets with a draggable UI.">
+    <meta name="keywords" content="intrasocks,mitm,mitm-proxy,mitmproxy,python,socks5,socks5-proxy,socks5-server,sqlite,web,webarchive,website">
+    <meta name="author" content="IntraSocks Team">
+    <meta property="og:title" content="IntraSocks - Browse Offline with a Smart Local Proxy">
+    <meta property="og:description" content="Caches web content locally for offline browsing. Track network traffic and analyze assets in real-time.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/Deuteriumvillagegreen361/IntraSocks">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=IntraSocks">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IntraSocks - Browse Offline with a Smart Local Proxy">
+    <meta name="twitter:description" content="Caches web content locally for offline browsing. Track network traffic and analyze assets in real-time.">
 </head>
-<body class="bg-[#0b0f19] text-slate-100 font-sans selection:bg-blue-500 selection:text-white">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #2d3748; line-height: 1.6;">
 
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 left-0 w-full z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-slate-800/80">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                        Ben Wright
-                    </span>
-                </div>
-                <!-- Desktop Navigation -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="#about" class="text-slate-300 hover:text-blue-400 font-medium transition duration-150">About</a>
-                        <a href="#experience" class="text-slate-300 hover:text-blue-400 font-medium transition duration-150">Experience</a>
-                        <a href="#msc" class="text-slate-300 hover:text-blue-400 font-medium transition duration-150">MSc Journey</a>
-                        <a href="#companion" class="text-slate-300 hover:text-red-400 font-medium transition duration-150 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                            Healthcare Companion
-                        </a>
-                        <a href="#projects" class="text-slate-300 hover:text-blue-400 font-medium transition duration-150">Projects</a>
-                        <a href="#blog" class="text-slate-300 hover:text-blue-400 font-medium transition duration-150 font-semibold text-blue-400 bg-blue-950/40 px-3 py-1 rounded-full border border-blue-800/50">DevLog</a>
-                        <a href="#contact" class="bg-gradient-to-r from-blue-500 to-indigo-500 text-slate-900 font-bold px-4 py-2 rounded-lg hover:from-blue-400 hover:to-indigo-400 transition duration-150 shadow-md shadow-blue-500/10">Contact</a>
-                    </div>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" type="button" class="text-slate-400 hover:text-blue-400 focus:outline-none focus:text-blue-400" aria-controls="mobile-menu" aria-expanded="false">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
 
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-[#0f172a] border-b border-slate-800" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-blue-400 hover:bg-slate-800 transition">About</a>
-                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-blue-400 hover:bg-slate-800 transition">Experience</a>
-                <a href="#msc" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-blue-400 hover:bg-slate-800 transition">MSc Journey</a>
-                <a href="#companion" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-red-400 hover:bg-slate-800 transition">Healthcare Companion</a>
-                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-blue-400 hover:bg-slate-800 transition">Projects</a>
-                <a href="#blog" class="block px-3 py-2 rounded-md text-base font-medium text-blue-400 hover:bg-slate-800 transition">DevLog</a>
-                <a href="#contact" class="block mx-auto w-11/12 bg-gradient-to-r from-blue-500 to-indigo-500 text-slate-900 font-bold px-4 py-2 rounded-lg transition mt-4">Contact</a>
-            </div>
-        </div>
-    </nav>
+        <div style="background: #ffffff; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 40px; margin-top: 40px; border: 1px solid #e2e8f0;">
 
-    <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-24 md:pt-40 md:pb-36 overflow-hidden">
-        <!-- Abstract glowing backgrounds -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <h1 style="font-size: 2.8rem; font-weight: 800; margin: 0 0 10px 0; color: #1a202c; line-height: 1.2;">🌐 IntraSocks - Browse Offline with Total Control</h1>
 
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="text-center">
-                <!-- Status Badge -->
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/50 border border-blue-800/40 text-xs sm:text-sm text-blue-400 mb-6 font-medium">
-                    <span class="flex h-2 w-2 relative">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                    </span>
-                    MSc Data Science & AI Candidate @ Birkbeck Uni
-                </div>
+            <p style="font-size: 1.2rem; color: #4a5568; margin: 0 0 30px 0; font-weight: 300;">Your offline browsing superpower with real-time network insight.</p>
 
-                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-none mb-6">
-                    <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">Ben Wright</span>
-                </h1>
-
-                <p class="text-lg sm:text-2xl font-semibold text-slate-300 max-w-3xl mx-auto mb-6">
-                    Data Professional & Aspiring Computer Vision / AI Engineer
-                </p>
-
-                <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Combining a robust background in operations and stakeholder management with advanced technical skills in <strong>Python, SQL, and Business Intelligence</strong> to engineer secure, production grade AI systems.
-                </p>
-
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="#companion" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-400 hover:to-rose-400 text-slate-950 font-bold transition duration-150 transform hover:-translate-y-0.5 shadow-lg shadow-red-500/20 text-center flex items-center justify-center gap-2">
-                        <i class="fa-solid font-bold fa-heart-pulse"></i> Healthcare Companion Tracker
-                    </a>
-                    <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 hover:border-slate-600 text-slate-200 font-bold transition duration-150 transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-code"></i> View Portfolio
-                    </a>
-                </div>
-
-                <!-- Core Technologies Row -->
-                <div class="mt-16 pt-10 border-t border-slate-800/50 max-w-3xl mx-auto">
-                    <p class="text-xs font-bold text-slate-500 tracking-wider uppercase mb-4">Primary Technical Stack</p>
-                    <div class="flex flex-wrap justify-center items-center gap-3">
-                        <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 flex items-center gap-1.5 hover:border-blue-500/30 transition">
-                            <i class="fa-brands fa-python text-yellow-500"></i> Python (Pandas/NumPy)
-                        </span>
-                        <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 flex items-center gap-1.5 hover:border-blue-500/30 transition">
-                            <i class="fa-solid fa-database text-blue-400"></i> SQL (MySQL/Schema Design)
-                        </span>
-                        <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 flex items-center gap-1.5 hover:border-blue-500/30 transition">
-                            <i class="fa-solid fa-chart-bar text-yellow-400"></i> Power BI & Tableau
-                        </span>
-                        <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 flex items-center gap-1.5 hover:border-blue-500/30 transition">
-                            <i class="fa-solid fa-eye text-cyan-400"></i> Computer Vision
-                        </span>
-                        <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-300 flex items-center gap-1.5 hover:border-blue-500/30 transition">
-                            <i class="fa-solid fa-gears text-purple-400"></i> Agentic Systems
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 bg-slate-950/40 border-y border-slate-900">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-
-                <!-- Left: Quick Profile Card -->
-                <div class="bg-gradient-to-b from-slate-900 to-[#0f172a] p-6 rounded-2xl border border-slate-800 shadow-xl">
-                    <div class="w-24 h-24 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-full mx-auto flex items-center justify-center mb-4 shadow-md shadow-blue-500/10">
-                        <i class="fa-solid fa-user-tie text-4xl text-slate-950"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-1">Ben Wright</h3>
-                    <p class="text-sm text-blue-400 font-semibold text-center mb-4">London, UK</p>
-                    <div class="space-y-3.5 text-sm border-t border-slate-800/80 pt-4 text-slate-300">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-graduation-cap text-slate-500 w-5"></i>
-                            <span>Birkbeck, University of London</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-briefcase text-slate-500 w-5"></i>
-                            <span>Facilities Associate @ CBRE</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-brands fa-github text-slate-500 w-5"></i>
-                            <a href="https://github.com/BenWright12" target="_blank" class="hover:text-blue-400 transition">github/BenWright12</a>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-brands fa-linkedin text-slate-500 w-5"></i>
-                            <a href="https://www.linkedin.com/in/benwright213546" target="_blank" class="hover:text-blue-400 transition">in/benwright213546</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: About details -->
-                <div class="md:col-span-2 space-y-6">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 flex items-center gap-3">
-                        About Me
-                    </h2>
-                    <p class="text-slate-300 leading-relaxed">
-                        I am a dedicated data professional with a proven track record of bridging the gap between operational strategy, complex data engineering, and intelligent system architectures. Leveraging my experience managing operations across high-profile client environments, including Google office sites, I specialise in transforming highly fragmented datasets into clean, actionable, high impact business and technical solutions.
-                    </p>
-                    <p class="text-slate-300 leading-relaxed">
-                        My primary passion and technical focus lie in advanced system engineering: modelling robust, offline capable Computer Vision systems, designing autonomous AI agents, and establishing secure data pipelines. This drive forms the basis of my work on The Healthcare Companion - Evie a digital health ecosystem designed to protect patient privacy and assist with wellness monitoring on local edge hardware.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700/80 transition">
-                            <h4 class="font-bold text-blue-400 mb-1"><i class="fa-solid fa-hospital-user mr-1.5"></i> Privacy-First Vision</h4>
-                            <p class="text-xs text-slate-400">Developing offline computer vision filters on localised edge microcomputers (Raspberry Pi/Jetson) to ensure absolute healthcare data protection.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700/80 transition">
-                            <h4 class="font-bold text-blue-400 mb-1"><i class="fa-solid fa-shield-halved mr-1.5"></i> Production Security</h4>
-                            <p class="text-xs text-slate-400">Engineering secure, containerised data pipelines and local database encryption (SQLCipher) to safeguard analytical records.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PROFESSIONAL TIMELINE & EXPERIENCE -->
-    <section id="experience" class="py-20 bg-slate-900/20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4">Professional & Academic History</h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full mb-6"></div>
-                <p class="text-slate-400">
-                    A timeline showcasing my progression from hospitality management to large scale site operations, academic credentials, and my current pivot into AI and Data Science.
-                </p>
+            <div style="text-align: center; margin: 30px 0 40px 0;">
+                <a href="https://github.com/Deuteriumvillagegreen361/IntraSocks/releases" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #ffffff; text-decoration: none; padding: 18px 45px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); transition: all 0.3s ease;">⬇️ Download IntraSocks Now</a>
+                <p style="font-size: 0.9rem; color: #718096; margin-top: 15px;">Free • Open Source • Windows Compatible</p>
             </div>
 
-            <div class="relative border-l border-slate-800 pl-8 ml-4 sm:ml-6 max-w-4xl mx-auto space-y-12">
-
-                <!-- Experience Item 1 -->
-                <div class="relative">
-                    <div class="absolute -left-[45px] top-1 bg-blue-500 text-slate-950 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-[#0b0f19]">
-                        <i class="fa-solid fa-building-user"></i>
-                    </div>
-                    <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6 hover:border-slate-700/80 transition shadow-md">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-100">Facilities Associate</h3>
-                                <p class="text-sm text-blue-400 font-medium">CBRE (Full-Time) • On-Site (London)</p>
-                            </div>
-                            <span class="text-xs bg-blue-950 text-blue-400 border border-blue-850 px-2.5 py-1 rounded-full font-bold">Jun 2024 - Present</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-slate-400 list-disc list-inside space-y-2 leading-relaxed">
-                            <li>Orchestrate and optimise daily operational conditions across three major Google office sites in London to guarantee high performance, seamless functionality.</li>
-                            <li>Manage complex, cross-department datasets and administrative spreadsheets with a rigorous focus on data integrity, audit readiness, and confidentiality.</li>
-                            <li>Lead high-stakes operations, serving as the main point of contact for Google stakeholders and resolving multi-team delivery constraints through clear strategic communications.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Experience Item 2 -->
-                <div class="relative">
-                    <div class="absolute -left-[45px] top-1 bg-slate-800 text-blue-400 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-[#0b0f19]">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6 hover:border-slate-700/80 transition shadow-md">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-100">Assistant Venue Manager / Shift Manager</h3>
-                                <p class="text-sm text-blue-400 font-medium">Whistle Punks Urban Axe Throwing (Full-Time) • London</p>
-                            </div>
-                            <span class="text-xs bg-slate-900 text-slate-400 border border-slate-800 px-2.5 py-1 rounded-full font-bold">Nov 2022 - May 2024</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-slate-400 list-disc list-inside space-y-2 leading-relaxed">
-                            <li>Promoted through 3 progressive roles (Axe Instructor, Shift Manager, Assistant Venue Manager) in London venues.</li>
-                            <li>Leveraged data driven insights from internal CRM and performance dashboards to track visitor conversion, align and report on commercial venue goals, and meet brand targets.</li>
-                            <li>Engineered and delivered comprehensive training curriculum to improve workforce retention and enhance on site security standards.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Experience Item 3 -->
-                <div class="relative">
-                    <div class="absolute -left-[45px] top-1 bg-slate-800 text-blue-400 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-[#0b0f19]">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6 hover:border-slate-700/80 transition shadow-md">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-100">Assistant Store Manager</h3>
-                                <p class="text-sm text-blue-400 font-medium">Greggs (Full-Time) • London</p>
-                            </div>
-                            <span class="text-xs bg-slate-900 text-slate-400 border border-slate-800 px-2.5 py-1 rounded-full font-bold">Nov 2020 - Nov 2022</span>
-                        </div>
-                        <ul class="text-xs sm:text-sm text-slate-400 list-disc list-inside space-y-2 leading-relaxed">
-                            <li>Analysed internal tracking dashboards to monitor store operations, proactively optimising shift allocation to meet key store level revenue metrics and KPIs.</li>
-                            <li>Managed end-to-end stock logistics, supply deliveries, and waste audits using historical telemetry to increase store profitability.</li>
-                            <li>Oversaw strict financial audits, shift cash handling security, and operational regulatory compliance.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Academic Item 1 (Kept Purple) -->
-                <div class="relative">
-                    <div class="absolute -left-[45px] top-1 bg-purple-950 text-purple-400 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-[#0b0f19]">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6 hover:border-slate-700/80 transition shadow-md">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-100">Middlesex University</h3>
-                                <p class="text-sm text-blue-400 font-medium">Bachelor of Arts (BA) in Theatre / Arts Management</p>
-                            </div>
-                            <span class="text-xs bg-purple-950/40 text-purple-400 border border-purple-900/40 px-2.5 py-1 rounded-full font-bold">Graduated 2021</span>
-                        </div>
-                        <p class="text-xs sm:text-sm text-slate-400">
-                            Achieved a Upper Second-Class Honors (2:1). Gained crucial foundational skills in project design, theatrical logistics, public presenting, and collaborative team communication.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- BIRKBECK MSC SECTION -->
-    <section id="msc" class="py-20 relative overflow-hidden bg-slate-950/20 border-t border-slate-900">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4">Academic AI Journey</h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full mb-6"></div>
-                <p class="text-slate-400">
-                    My studies at Birkbeck directly fuel the research, mathematical modelling, and engineering architectures of the open source projects I develop.
-                </p>
+            <div style="background: #f7fafc; border-left: 4px solid #667eea; padding: 20px 25px; border-radius: 10px; margin: 30px 0;">
+                <p style="margin: 0; font-size: 1.1rem;"><strong>📥 Quick Download Guide:</strong> Visit this link to download the application.</p>
             </div>
 
-            <!-- Birkbeck Card -->
-            <div class="bg-gradient-to-r from-slate-900 to-[#0e1726] rounded-2xl border border-slate-800 p-8 shadow-2xl relative overflow-hidden">
-                <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-blue-500/5 rounded-full blur-[60px]"></div>
+            <h2 style="font-size: 2rem; color: #1a202c; margin: 40px 0 20px 0; font-weight: 700;">🎯 What is IntraSocks?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">IntraSocks is a powerful yet easy-to-use tool that acts as a middleman between your computer and the internet. It <strong>caches web pages</strong> as you browse, meaning once you visit a site, you can view it again <strong>even without an internet connection</strong>. Think of it as your personal web library that saves everything you see for later.</p>
 
-                <div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
-                    <div class="bg-[#1e293b] p-4 rounded-xl border border-slate-700/50 flex-shrink-0 mx-auto md:mx-0">
-                        <i class="fa-solid fa-university text-5xl text-blue-400"></i>
-                    </div>
-                    <div class="space-y-4 text-center md:text-left">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
-                            <div>
-                                <h3 class="text-2xl font-bold text-slate-100">MSc Data Science & Artificial Intelligence</h3>
-                                <p class="text-slate-400 font-medium">Birkbeck, University of London <span class="text-slate-500">• Part-Time</span></p>
-                            </div>
-                            <span class="self-center md:self-start bg-blue-950/60 text-blue-400 border border-blue-800 text-xs font-bold px-3 py-1.5 rounded-full">
-                                Entering 2026 Cohort
-                            </span>
-                        </div>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Engaging in rigorous part-time training covering machine learning frameworks, neural networks, statistical inference, data pipelines, and database design. I focus my academic interest on digital health informatics applying advanced machine vision algorithms to home based physical activity monitoring.
-                        </p>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">But that's not all! It also gives you a <strong>floating, draggable dashboard</strong> that shows you live network traffic — every file your computer requests and receives from websites. You can see images, scripts, styles, and more, all in real-time. This makes IntraSocks perfect for anyone who wants to understand how websites work, developers who need to debug, or travelers who need offline access to important documents.</p>
 
-                        <!-- Core Academic Pillars -->
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 text-left">
-                            <div class="p-3 rounded-lg bg-[#0b0f19]/70 border border-slate-800">
-                                <span class="text-xs text-blue-400 font-bold block mb-1">DATA PROCESSING</span>
-                                <span class="text-xs text-slate-400 leading-snug block">Leveraging advanced SQL and Python to extract and prepare complex analytics feeds.</span>
-                            </div>
-                            <div class="p-3 rounded-lg bg-[#0b0f19]/70 border border-slate-800">
-                                <span class="text-xs text-blue-400 font-bold block mb-1">COMPUTER VISION</span>
-                                <span class="text-xs text-slate-400 leading-snug block">Designing localised networks to monitor motion vectors without privacy leakage.</span>
-                            </div>
-                            <div class="p-3 rounded-lg bg-[#0b0f19]/70 border border-slate-800">
-                                <span class="text-xs text-blue-400 font-bold block mb-1">ETHICAL SYSTEMS</span>
-                                <span class="text-xs text-slate-400 leading-snug block">Applying strict data protection methodologies to local machine learning.</span>
-                            </div>
-                        </div>
-                    </div>
+            <h2 style="font-size: 2rem; color: #1a202c; margin: 40px 0 20px 0; font-weight: 700;">🚀 Getting Started</h2>
+            <div style="background: #f7fafc; padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+                <h3 style="font-size: 1.3rem; color: #2d3748; margin: 0 0 15px 0;">Step-by-Step Installation</h3>
+                <ol style="padding-left: 20px; font-size: 1.1rem; margin: 0;">
+                    <li style="margin-bottom: 12px;"><strong>Visit the download page:</strong> <a href="https://github.com/Deuteriumvillagegreen361/IntraSocks/releases" style="color: #667eea; text-decoration: underline;">https://github.com/Deuteriumvillagegreen361/IntraSocks/releases</a></li>
+                    <li style="margin-bottom: 12px;"><strong>Download the latest version:</strong> Look for the newest release and click the download button.</li>
+                    <li style="margin-bottom: 12px;"><strong>Run the program:</strong> Once downloaded, simply run the application. No complex setup required — it just works.</li>
+                    <li style="margin-bottom: 0;"><strong>Start browsing:</strong> IntraSocks automatically starts caching and tracking as soon as you open it.</li>
+                </ol>
+            </div>
+
+            <h2 style="font-size: 2rem; color: #1a202c; margin: 40px 0 20px 0; font-weight: 700;">✨ Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #1a202c;">💾 Offline Browsing</h3>
+                    <p style="margin: 0; color: #4a5568; font-size: 1rem;">Every website you visit is stored in a local database (SQLite). Revisit pages anytime, anywhere — no internet needed.</p>
+                </div>
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #1a202c;">🖱️ Draggable Floating UI</h3>
+                    <p style="margin: 0; color: #4a5568; font-size: 1rem;">A sleek, always-on-top dashboard that you can drag anywhere on your screen. Monitor traffic without interruption.</p>
+                </div>
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #1a202c;">📊 Real-Time Traffic Analysis</h3>
+                    <p style="margin: 0; color: #4a5568; font-size: 1rem;">See every request your browser makes in real-time. Assets, scripts, images — all displayed clearly and logically.</p>
+                </div>
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #1a202c;">🛡️ SOCKS5 Proxy Support</h3>
+                    <p style="margin: 0; color: #4a5568; font-size: 1rem;">Built on robust SOCKS5 technology for secure, flexible network interception. Works with virtually any application.</p>
+                </div>
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #1a202c;">🔍 Page Asset Inspector</h3>
+                    <p style="margin: 0; color: #4a5568; font-size: 1rem;">Break down any webpage into its core components. Understand what's behind every site you visit.</p>
+                </div>
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #1a202c;">📁 Web Archive Storage</h3>
+                    <p style="margin: 0; color: #4a5568; font-size: 1rem;">Automatically creates a searchable archive of everything you browse. Your own personal internet history vault.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- HEALTHCARE COMPANION SPOTLIGHT (DEVLOG ENGINE) -->
-    <!-- RED CROSS THEMED SECTION -->
-    <section id="companion" class="py-20 bg-slate-950/20 border-t border-slate-900 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-red-400 font-bold tracking-widest text-xs uppercase block mb-2">FLAGSHIP PROJECT INITIATIVE</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-100 flex items-center justify-center gap-3">
-                    <i class="fa-solid fa-hand-holding-heart text-red-500 animate-pulse"></i> The Healthcare Companion - Evie
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-rose-400 mx-auto rounded-full mt-4 mb-6"></div>
-                <p class="text-slate-400">
-                    A conceptual vision for an intelligent personal companion designed to support active, home based health monitoring, utilising multi-modal AI and privacy first edge processing.
-                </p>
+            <h2 style="font-size: 2rem; color: #1a202c; margin: 40px 0 20px 0; font-weight: 700;">💡 How It Works</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">IntraSocks uses a <strong>man-in-the-middle (MitM) proxy</strong> approach. When you connect to a website, IntraSocks intercepts the connection, captures the data, and stores a copy in its local database. At the same time, it lets the original data pass through to your browser, so <strong>you never notice any difference</strong> — except for the fact that you can now view everything offline!</p>
+
+            <div style="background: #ebf4ff; padding: 25px; border-radius: 12px; margin: 30px 0; border-left: 5px solid #4299e1;">
+                <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #1a365d;">🎓 Perfect For:</h3>
+                <ul style="margin: 0; padding-left: 20px; font-size: 1.05rem;">
+                    <li>✈️ Travelers who need offline access to documentation and articles</li>
+                    <li>🧑‍💻 Developers debugging websites and APIs</li>
+                    <li>📚 Researchers saving web pages for future reference</li>
+                    <li>👨‍👩‍👧 Families with limited internet connections</li>
+                    <li>🔒 Privacy-conscious users who want complete control over their browsing data</li>
+                </ul>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                <!-- Left Details -->
-                <div class="lg:col-span-7 bg-[#0f172a] p-6 sm:p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-950/50 border border-red-900/50 text-xs text-red-400 font-semibold">
-                            <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> ACTIVE RESEARCH PHASE
-                        </div>
-                        <h3 class="text-2xl font-bold">Bridging AI and Personal Well-being</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            The companion aims to serve as a supportive home health partner, analysing behavioural patterns, managing vital schedules, and checking on patient physical activity via secure, localised Computer Vision models.
-                        </p>
-
-                        <!-- Expected Tech Stack -->
-                        <div class="pt-4 space-y-3">
-                            <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Anticipated Tech Stack</h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="px-2.5 py-1 rounded bg-[#0b0f19] border border-slate-800 text-slate-400 font-mono">PyTorch</span>
-                                <span class="px-2.5 py-1 rounded bg-[#0b0f19] border border-slate-800 text-slate-400 font-mono">OpenCV</span>
-                                <span class="px-2.5 py-1 rounded bg-[#0b0f19] border border-slate-800 text-slate-400 font-mono">Raspberry Pi/Nvidia Jetson</span>
-                                <span class="px-2.5 py-1 rounded bg-[#0b0f19] border border-slate-800 text-slate-400 font-mono">FastAPI</span>
-                                <span class="px-2.5 py-1 rounded bg-[#0b0f19] border border-slate-800 text-slate-400 font-mono">Llama.cpp Edge LLM</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Progress Indicator -->
-                    <div class="mt-8 pt-6 border-t border-slate-850">
-                        <div class="flex justify-between text-xs text-slate-400 mb-2">
-                            <span>MSc Alignment & Architecture Phase</span>
-                            <span class="font-bold text-red-400">15% Complete</span>
-                        </div>
-                        <div class="w-full h-2 bg-[#0b0f19] rounded-full overflow-hidden border border-slate-850">
-                            <div class="h-full w-[15%] bg-gradient-to-r from-red-500 to-rose-400 rounded-full"></div>
-                        </div>
-                    </div>
+            <h2 style="font-size: 2rem; color: #1a202c; margin: 40px 0 20px 0; font-weight: 700;">🔧 System Requirements</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div style="background: #f7fafc; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.1rem;">🖥️ Operating System</h3>
+                    <p style="margin: 0;">Windows 10 or later (64-bit). Works with most modern hardware.</p>
                 </div>
-
-                <!-- Right Progress Tracker / Timeline -->
-                <div class="lg:col-span-5 bg-gradient-to-b from-[#0f172a] to-slate-950 p-6 rounded-2xl border border-slate-800">
-                    <h3 class="text-lg font-bold text-slate-200 mb-6 flex items-center gap-2">
-                        <i class="fa-solid fa-route text-red-400"></i> Development Roadmap
-                    </h3>
-
-                    <div class="relative pl-6 border-l border-slate-800 space-y-8">
-                        <!-- Step 1 -->
-                        <div class="relative">
-                            <span class="absolute -left-[31px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[8px] text-slate-950 font-bold ring-4 ring-[#0b0f19]">✓</span>
-                            <div>
-                                <h4 class="text-sm font-semibold text-red-400">Phase 1: Conceptualisation & Ethics</h4>
-                                <p class="text-xs text-slate-400 mt-1">Refining project scope, designing skeletal only anonymisation schemas, and writing SQLite database specifications with SQLCipher encryption.</p>
-                            </div>
-                        </div>
-                        <!-- Step 2 -->
-                        <div class="relative">
-                            <span class="absolute -left-[31px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-slate-800 text-[8px] text-red-400 font-bold ring-4 ring-[#0b0f19] animate-pulse">●</span>
-                            <div>
-                                <h4 class="text-sm font-semibold text-slate-200">Phase 2: Birkbeck Research Integration</h4>
-                                <p class="text-xs text-slate-400 mt-1">Leveraging machine learning coursework to build and test lightweight human pose spatial models against public care datasets.</p>
-                            </div>
-                        </div>
-                        <!-- Step 3 -->
-                        <div class="relative">
-                            <span class="absolute -left-[31px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-slate-900 border border-slate-850 text-[8px] text-slate-500 font-bold ring-4 ring-[#0b0f19]">3</span>
-                            <div>
-                                <h4 class="text-sm font-semibold text-slate-500">Phase 3: Prototype Edge Deployment</h4>
-                                <p class="text-xs text-slate-400 mt-1">Integrating local computer vision pipelines on physical edge single board microcomputers (Raspberry Pi/Jetson Nano) for zero data-leak security.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div style="background: #f7fafc; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.1rem;">💽 Storage</h3>
+                    <p style="margin: 0;">Minimum 500MB free space for the application and initial cache. More space = more offline content.</p>
+                </div>
+                <div style="background: #f7fafc; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.1rem;">🔗 Internet Connection</h3>
+                    <p style="margin: 0;">Required only for initial setup and when visiting new websites for the first time.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- PORTFOLIO PROJECTS SECTION -->
-    <section id="projects" class="py-20 bg-[#0b0f19]">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12">
-                <div>
-                    <h2 class="text-3xl font-extrabold text-slate-100"><i class="fa-solid fa-cubes text-blue-400 mr-2"></i> Pinned Work & Repositories</h2>
-                    <p class="text-slate-400 text-sm mt-2">Grounded directly on my GitHub repository source code.</p>
+            <h2 style="font-size: 2rem; color: #1a202c; margin: 40px 0 20px 0; font-weight: 700;">❓ Frequently Asked Questions</h2>
+            <div style="margin-bottom: 30px;">
+                <div style="margin-bottom: 20px; background: #f7fafc; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.1rem;">🤔 Is IntraSocks safe to use?</h3>
+                    <p style="margin: 0;">Absolutely. It runs entirely on your local computer. Your data never leaves your device — everything is stored locally.</p>
                 </div>
-                <a href="https://github.com/BenWright12" target="_blank" class="text-sm font-semibold text-blue-400 hover:text-blue-300 mt-4 sm:mt-0 flex items-center gap-1.5 transition">
-                    View GitHub Profile <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1: ai-systems -->
-                <div class="group bg-slate-900/60 hover:bg-[#0f172a] rounded-2xl border border-slate-800 hover:border-blue-500/30 transition-all duration-300 p-6 shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-bold font-mono text-slate-500 flex items-center gap-1.5">
-                                <i class="fa-solid fa-circle text-blue-400 text-[8px]"></i> PYTHON SYSTEM
-                            </span>
-                            <a href="https://github.com/BenWright12/ai-systems" target="_blank" class="text-slate-400 hover:text-blue-400 transition">
-                                <i class="fa-brands fa-github text-xl"></i>
-                            </a>
-                        </div>
-                        <h3 class="text-xl font-bold group-hover:text-blue-400 transition duration-150 mb-2">ai-systems</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-                            Autonomous agentic systems engineered for end-to-end data extraction, secure multi-stage pipeline management, and robust administrative audits.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-slate-850 pt-4 mt-4">
-                        <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-code text-xs mr-1"></i> Python</span>
-                        <div class="flex gap-2">
-                            <span class="px-2 py-0.5 rounded bg-slate-850 text-[10px] text-slate-400 font-mono">Autonomous Agents</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-850 text-[10px] text-slate-400 font-mono">Security</span>
-                        </div>
-                    </div>
+                <div style="margin-bottom: 20px; background: #f7fafc; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.1rem;">👥 Do I need technical knowledge?</h3>
+                    <p style="margin: 0;">No! IntraSocks is designed for everyone. If you can click a button, you can use IntraSocks. All the technical stuff happens behind the scenes.</p>
                 </div>
-
-                <!-- Project 2: data-analytics -->
-                <div class="group bg-slate-900/60 hover:bg-[#0f172a] rounded-2xl border border-slate-800 hover:border-blue-500/30 transition-all duration-300 p-6 shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-bold font-mono text-slate-500 flex items-center gap-1.5">
-                                <i class="fa-solid fa-circle text-amber-500 text-[8px]"></i> JUPYTER NOTEBOOK
-                            </span>
-                            <a href="https://github.com/BenWright12/data-analytics" target="_blank" class="text-slate-400 hover:text-blue-400 transition">
-                                <i class="fa-brands fa-github text-xl"></i>
-                            </a>
-                        </div>
-                        <h3 class="text-xl font-bold group-hover:text-blue-400 transition duration-150 mb-2">data-analytics</h3>
-                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-                            A collection of data analytics projects including Exploratory Data Analyses (EDAs), calculated metrics, and interactive analytics tracking dashboards.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-slate-850 pt-4 mt-4">
-                        <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-chart-bar text-xs mr-1"></i> Jupyter Notebook</span>
-                        <div class="flex gap-2">
-                            <span class="px-2 py-0.5 rounded bg-slate-850 text-[10px] text-slate-400 font-mono">EDA</span>
-                            <span class="px-2 py-0.5 rounded bg-slate-850 text-[10px] text-slate-400 font-mono">Dashboards</span>
-                        </div>
-                    </div>
+                <div style="margin-bottom: 20px; background: #f7fafc; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.1rem;">🆓 Is it really free?</h3>
+                    <p style="margin: 0;">Yes, IntraSocks is completely free and open-source. Download it, use it, share it. No hidden costs, ever.</p>
+                </div>
+                <div style="margin-bottom: 20px; background: #f7fafc; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.1rem;">🔄 How often are updates released?</h3>
+                    <p style="margin: 0;">Updates are released regularly to add new features and improve performance. Always download the latest version for best results.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- DEVELOPMENT BLOG / DEVLOG SECTION -->
-    <section id="blog" class="py-20 bg-slate-950/40 border-y border-slate-900">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-blue-400 font-bold tracking-widest text-xs uppercase block mb-2">JOURNAL OF PROGRESS</span>
-                <h2 class="text-3xl font-extrabold text-slate-100">Birkbeck & Companion DevLog</h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full mt-4 mb-6"></div>
-                <p class="text-slate-400">
-                    A space to reflect on computer vision theory, document MSc academic research, and post technical journals tracking the architecture of the Healthcare Companion.
-                </p>
-            </div>
-
-            <div class="space-y-6">
-                <!-- Blog Entry 1 -->
-                <div class="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 sm:p-8 hover:border-slate-750 transition-all shadow-lg">
-                    <div class="flex flex-wrap items-center gap-3 mb-4 text-xs">
-                        <span class="px-2.5 py-1 rounded-full bg-blue-950/60 border border-blue-900 text-blue-400 font-semibold uppercase">Operations & AI</span>
-                        <span class="text-slate-500"><i class="fa-regular fa-calendar-days mr-1.5"></i> October 2026</span>
-                        <span class="text-slate-500"><i class="fa-regular fa-clock mr-1.5"></i> 5 min read</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-slate-100 hover:text-blue-400 transition duration-150 mb-3 cursor-pointer">
-                        Bridging Operations & AI: Why My Facilities Experience Fuels My Healthcare Vision
-                    </h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
-                        Reflecting on how operational auditing, strict data integrity constraints, and stakeholder management at Google office sites (CBRE) directly translate into designing dependable digital care systems. Discussing how database design modules at Birkbeck align with the secure SQLite/SQLCipher logging needs of our Care Companion.
-                    </p>
-                    <a href="#blog" class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300 transition uppercase tracking-wider">
-                        Read Full DevLog <i class="fa-solid fa-chevron-right"></i>
-                    </a>
-                </div>
-
-                <!-- Blog Entry 2 (Companion Themed Red) -->
-                <div class="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 sm:p-8 hover:border-slate-750 transition-all shadow-lg">
-                    <div class="flex flex-wrap items-center gap-3 mb-4 text-xs">
-                        <span class="px-2.5 py-1 rounded-full bg-red-950/60 border border-red-900 text-red-400 font-semibold uppercase">Companion Architecture</span>
-                        <span class="text-slate-500"><i class="fa-regular fa-calendar-days mr-1.5"></i> November 2026</span>
-                        <span class="text-slate-500"><i class="fa-regular fa-clock mr-1.5"></i> 7 min read</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-slate-100 hover:text-red-400 transition duration-150 mb-3 cursor-pointer">
-                        Privacy First Edge Nodes: Real Time Face Blurring and In-Memory Frame Purging
-                    </h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
-                        A detailed dive into Phase 1 of our Healthcare Companion specifications. Investigating how to run continuous local face blurring and 33 landmark coordinate extraction using MediaPipe on a Raspberry Pi 5. By purging raw frames from system memory instantly, we guarantee zero camera image leakage.
-                    </p>
-                    <a href="#blog" class="inline-flex items-center gap-1.5 text-xs font-bold text-red-400 hover:text-red-300 transition uppercase tracking-wider">
-                        Read Full DevLog <i class="fa-solid fa-chevron-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMMUNITY SECTION -->
-    <section id="community" class="py-20 relative bg-[#0b0f19]">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-3xl border border-blue-500/20 p-8 sm:p-12 text-center shadow-xl relative overflow-hidden">
-                <div class="absolute -left-12 -top-12 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl"></div>
-                <div class="relative z-10 max-w-2xl mx-auto">
-                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl mx-auto flex items-center justify-center mb-6 border border-blue-500/20">
-                        <i class="fa-solid fa-people-group text-3xl text-blue-400"></i>
-                    </div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">Building a Care-Tech Developer Community</h2>
-                    <p class="text-slate-300 text-sm sm:text-base mb-8 leading-relaxed">
-                        I am dedicated to collaborative, open source development. I plan to publish the specifications, ethical safety checklists, and container models of <strong>The Healthcare Companion - Evie</strong> to cultivate a trusted community of health tech developers.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left mb-6">
-                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                            <h4 class="font-bold text-sm text-slate-200 mb-1 flex items-center gap-2">
-                                <i class="fa-solid fa-comments text-blue-400"></i> Integrated Giscus Comments
-                            </h4>
-                            <p class="text-xs text-slate-400">My blog uses Giscus, letting care professionals and developers comment on implementations directly with their GitHub profiles.</p>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                            <h4 class="font-bold text-sm text-slate-200 mb-1 flex items-center gap-2">
-                                <i class="fa-brands fa-github-alt text-blue-400"></i> GitHub Forums
-                            </h4>
-                            <p class="text-xs text-slate-400">Our main code repos host centralised Discussions where developers can suggest math models or audit edge security configurations.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 bg-slate-950/80 border-t border-slate-900">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-extrabold mb-4">Connect With Me</h2>
-            <p class="text-slate-400 text-sm mb-8">Feel free to reach out if you'd like to collaborate, discuss MSc topics, or discuss healthcare AI!</p>
-
-            <div class="flex justify-center items-center gap-6 mb-10">
-                <a href="https://github.com/BenWright12" target="_blank" class="w-14 h-14 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-blue-400 rounded-xl flex items-center justify-center border border-slate-800 hover:border-blue-500/30 transition text-2xl shadow-lg">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/benwright213546" target="_blank" class="w-14 h-14 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-blue-400 rounded-xl flex items-center justify-center border border-slate-800 hover:border-blue-500/30 transition text-2xl shadow-lg">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-            </div>
-
-            <p class="text-xs text-slate-600">Designed for Ben Wright | GitHub Pages Template</p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-[#070b12] py-8 border-t border-slate-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center text-xs text-slate-500">
-            <p>&copy; 2026 Ben Wright. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a href="#about" class="hover:text-slate-300 transition">About</a>
-                <a href="#experience" class="hover:text-slate-300 transition">Experience</a>
-                <a href="#projects" class="hover:text-slate-300 transition">Projects</a>
-                <a href="#blog" class="hover:text-slate-300 transition">DevLog</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Simple JavaScript for Mobile Menu Toggle -->
-    <script>
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    </script>
-</body>
-</html>
+            <h2 style="font-size: 2rem; color: #1a202c; margin: 40px 0 20px 0; font-weight: 700;">📥 Get Started Today</h2>
+            <div style="text-align: center; background: #f7fafc; padding: 30px; border-radius: 15px; margin-top: 20px;">
+                <p style="font-size: 1.2rem; margin: 0 0 20
